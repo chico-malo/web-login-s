@@ -1,0 +1,42 @@
+/**
+ * Copyright: Copyright (C) 2018 sitb.software,All Rights Reserved
+ * author: yangyao(873241789@qq.com)
+ * date: 2018/8/8
+ */
+
+@import "color";
+
+body, article, aside, section, main, form {
+  margin: 0;
+  padding: 0;
+}
+
+h1, p {
+  margin: 15px 0;
+  padding: 0;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+input {
+  box-sizing: border-box;
+  border: none;
+}
+
+button {
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background: $main;
+  transition: background .3s ease-in-out;
+  &:hover {
+    background: $main-matching;
+    transition: background .3s ease-in-out;
+  }
+}

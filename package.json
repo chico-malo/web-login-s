@@ -1,0 +1,34 @@
+{
+  "name": "bless-register-login",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open --config webpack.dev.config.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^10.5.7",
+    "@types/react": "^16.4.8",
+    "@types/react-dom": "^16.0.7",
+    "@types/react-router-dom": "^4.3.0",
+    "es6-promise": "^4.2.4",
+    "file-loader": "^1.1.11",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1",
+    "unfetch": "^3.1.1"
+  },
+  "devDependencies": {
+    "css-loader": "^1.0.0",
+    "sass-loader": "^7.1.0",
+    "source-map-loader": "^0.2.3",
+    "style-loader": "^0.21.0",
+    "ts-loader": "^4.4.2",
+    "typescript": "^3.0.1",
+    "webpack-dev-server": "^3.1.5"
+  }
+}

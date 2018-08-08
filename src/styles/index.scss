@@ -1,0 +1,98 @@
+/**
+ * Copyright: Copyright (C) 2018 sitb.software,All Rights Reserved
+ * author: yangyao(873241789@qq.com)
+ * date: 2018/8/8
+ */
+@import "common";
+@import "color";
+
+.formatFont {
+  text-align: center;
+  color: #fff;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  .background {
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    z-index: -1;
+    filter: blur(0.5px);
+    background: url("../assets/image/background.jpg") no-repeat center;
+    background-size: cover;
+  }
+  /*浮动盒子*/
+  .floatBox {
+    position: relative;
+    padding: 16px;
+    width: 350px;
+    font-size: 0;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .5);
+    background: rgba(29, 29, 29, .1);
+  }
+}
+
+/*----login盒子------*/
+.floatBox {
+  .logo {
+    @extend .formatFont;
+    font-size: 30px;
+    font-weight: 700;
+  }
+  .descr {
+    @extend .formatFont;
+    font-size: 10px;
+  }
+  /*form表单*/
+  form {
+    margin: 50px auto 0;
+    width: 80%;
+    section {
+      position: relative;
+      margin: 10px 0;
+      border-radius: 5px;
+      overflow: hidden;
+      label {
+        position: absolute;
+        right: 80%;
+        display: inline-block;
+        text-align: right;
+        line-height: 40px;
+        font-size: 14px;
+        color: #333;
+      }
+      input {
+        width: 100%;
+        padding-left: 75px;
+        height: 40px;
+        color: $font-color-2;
+      }
+    }
+    .service {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      a {
+        font-size: 14px;
+        color: $font-color-3;
+      }
+    }
+    .submitBtn {
+      width: 100%;
+      padding: 10px 0;
+      margin: 8px 0;
+      color: #fff;
+    }
+    .verificationButton {
+      padding: 12px 10px;
+      position: absolute;
+      right: 0;
+      color: #fff;
+    }
+  }
+}
