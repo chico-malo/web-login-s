@@ -1,0 +1,32 @@
+/**
+ * Copyright: Copyright (C) 2018 sitb.software,All Rights Reserved
+ * author: yangyao(873241789@qq.com)
+ * date: 2018/8/10
+ */
+@import "color";
+
+/*弹框盒子*/
+.alert {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  padding: 8px 12px;
+  width: 100%;
+  border: 2px solid red;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: $font-color-1;
+  background: #fff;
+  /*svg 包裹盒子*/
+  .svg-wrapper {
+    margin-right: 10px;
+    /*svg外层盒子*/
+    div {
+      display: flex;
+    }
+  }
+}
+
