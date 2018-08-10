@@ -27,25 +27,28 @@ export class Login extends React.Component<any> {
 
     /**
      * 提交
+     * @param e
      * @param values
      */
-    handleSubmit(values) {
+    handleSubmit(e, values) {
         console.log(values);
-        fetch('/api/agencies', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(r => {
-            console.log(r);
-        })
+        return true;
     }
 
     render() {
+        // 拦截，修改name
+        fields.forEach(values => {
+            if (values.name === 'identity') {
+                values.name = 'username';
+            }
+        });
+
         return (
             <Form fields={fields}
                   buttonLabel="登录"
                   onSubmit={this.handleSubmit.bind(this)}
+                  action="/api/login"
+                  method="POST"
             >
                 <a href="javascript:void(0);"
                    onClick={this.goToRegister.bind(this)}
