@@ -25,7 +25,7 @@ export interface Form {
      * 提交事件
      * @param values
      */
-    onSubmit: (e, values) => void;
+    onSubmit: (values) => void;
     /**
      * 请求事件类型
      */
@@ -139,12 +139,11 @@ export default class Index extends React.Component<Form, State> {
     /**
      *
      * 提交
-     * @param e
      */
-    handleSubmit(e) {
+    handleSubmit() {
         const {onSubmit} = this.props;
         const {values} = this.state;
-        onSubmit && onSubmit(e, values);
+        onSubmit && onSubmit(values);
     }
 
     /**
