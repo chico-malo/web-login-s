@@ -10,7 +10,6 @@ import { fields } from './fields';
 import URL from '../constants/URL';
 import { Request } from '../cose/Request';
 import alert from '../components/Alert';
-import { statusCode } from '../constants/zh-cn';
 
 export class Register extends React.Component<any> {
     /**
@@ -35,12 +34,11 @@ export class Register extends React.Component<any> {
             body: JSON.stringify(values)
         }).then(res => {
             console.log(res);
-            const {status, success} = res;
             const {history} = this.props;
             // 后台信息弹框
-            alert(statusCode[status]);
+            alert(res);
             // 成功回调
-            if (success) {
+            if (res.success) {
                 setTimeout(() => {
                     history.push(routerPath.login);
                 }, 1000);
