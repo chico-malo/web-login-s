@@ -9,6 +9,8 @@ import Form, { FormItem } from '../components/Form';
 import { fields } from './fields';
 import URL from '../constants/URL';
 import { Request } from '../cose/Request';
+import alert from '../components/Alert';
+import { statusCode } from '../constants/zh-cn';
 
 export class Register extends React.Component<any> {
     /**
@@ -21,9 +23,11 @@ export class Register extends React.Component<any> {
 
     /**
      * 提交
+     * @param e
      * @param values
      */
-    handleSubmit(values) {
+    handleSubmit(e, values) {
+        e.preventDefault();
         console.log(values);
         Request({
             url: URL.user,
@@ -31,7 +35,16 @@ export class Register extends React.Component<any> {
             body: JSON.stringify(values)
         }).then(res => {
             console.log(res);
-            alert(res.describe);
+            const {status, success} = res;
+            const {history} = this.props;
+            // 后台信息弹框
+            alert(statusCode[status]);
+            // 成功回调
+            if (success) {
+                setTimeout(() => {
+                    history.push(routerPath.login);
+                }, 1000);
+            }
         });
     }
 
@@ -46,7 +59,7 @@ export class Register extends React.Component<any> {
         });
         return (
             <Form fields={registerConfig}
-                  buttonLabel="立即修改"
+                  buttonLabel="立即注册"
                   title="注册-"
                   onSubmit={this.handleSubmit.bind(this)}
             >
