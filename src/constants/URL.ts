@@ -4,6 +4,6 @@
  * date: 2018/8/10
  */
 export default {
-    user: '/api/users',
-    check: '/api/register-check-value'
+    check: '/api/register-check-value',
+    user: '/api/users'
 }
