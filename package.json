@@ -24,6 +24,7 @@
   "devDependencies": {
     "css-loader": "^1.0.0",
     "file-loader": "^1.1.11",
+    "react-svg": "^5.0.14",
     "sass-loader": "^7.1.0",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.21.0",
