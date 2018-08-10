@@ -7,6 +7,8 @@ import * as React from 'react';
 import { routerPath } from '../cose/router.config';
 import Form, { FormItem } from '../components/Form';
 import { fields } from './fields';
+import URL from '../constants/URL';
+import { Request } from '../cose/Request';
 
 export class Register extends React.Component<any> {
     /**
@@ -23,35 +25,24 @@ export class Register extends React.Component<any> {
      */
     handleSubmit(values) {
         console.log(values);
-        fetch('/api/agencies', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(r => {
-            console.log(r);
-        })
-    }
-
-    handleSand(e) {
-        e.preventDefault();
-        console.log('发送验证码');
+        Request({
+            url: URL.user,
+            method: 'POST',
+            body: JSON.stringify(values)
+        }).then(res => {
+            console.log(res);
+            alert(res.describe);
+        });
     }
 
     render() {
         // 注册config
         const registerConfig: Array<FormItem> = fields.concat({
             label: '验证码',
-            type: 'verification',
-            name: 'verification',
-            after: (
-                <button className="verificationButton"
-                        onClick={this.handleSand}
-                        style={{
-                            pointerEvents: 'none'
-                        }}
-                >发送验证码</button>
-            )
+            type: 'text',
+            name: 'checkValue',
+            placeholder: '4位验证码',
+            maxLength: 4
         });
         return (
             <Form fields={registerConfig}
