@@ -25,12 +25,15 @@ export interface Form {
      * 提交事件
      * @param values
      */
-    onSubmit: (values) => void;
+    onSubmit: (e, values) => void;
     /**
-     * 发送验证码
-     * @param values
+     * 请求事件类型
      */
-    onSand?: (values) => void;
+    method?: 'GET' | 'POST',
+    /**
+     * form提交地址
+     */
+    action?: string;
 }
 
 export interface FormItem {
@@ -139,10 +142,9 @@ export default class Index extends React.Component<Form, State> {
      * @param e
      */
     handleSubmit(e) {
-        e.preventDefault();
         const {onSubmit} = this.props;
         const {values} = this.state;
-        onSubmit && onSubmit(values);
+        onSubmit && onSubmit(e, values);
     }
 
     /**
@@ -161,12 +163,15 @@ export default class Index extends React.Component<Form, State> {
     }
 
     render() {
-        const {buttonLabel, fields, title = ''} = this.props;
+        const {buttonLabel, fields, title = '', method, action} = this.props;
         return (
             <aside className="floatBox">
                 <h1 className="logo">{`${title}上福数据`}</h1>
                 <p className="descr">上福数据 是金融圈最具影响力的 技术服务供应商</p>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}
+                      method={method}
+                      action={action}
+                >
 
                     {this.renderFormItem(fields)}
                     <p className="service">
