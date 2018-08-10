@@ -115,9 +115,7 @@ export default class Index extends React.Component<Form, State> {
             url: `${URL.check}?identity=${value.identity}`
         }).then(res => {
             console.log(res);
-            if (res.status === '3001') {
-                alert(res.describe);
-            }
+            alert(res);
             // 成功开始验证码倒数定时器
             if (res.success) {
                 this.setState({
