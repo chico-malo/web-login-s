@@ -6,6 +6,7 @@
 import * as React from 'react';
 import { Request } from '../../cose/Request';
 import URL from '../../constants/URL';
+import alert from '../Alert';
 
 export interface Form {
     /**
@@ -166,6 +167,7 @@ export default class Index extends React.Component<Form, State> {
                 <h1 className="logo">{`${title}上福数据`}</h1>
                 <p className="descr">上福数据 是金融圈最具影响力的 技术服务供应商</p>
                 <form onSubmit={this.handleSubmit}>
+
                     {this.renderFormItem(fields)}
                     <p className="service">
                         {this.props.children}
