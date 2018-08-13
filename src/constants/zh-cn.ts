@@ -3,6 +3,13 @@
  * author: yangyao(873241789@qq.com)
  * date: 2018/8/10
  */
+export const lang = {
+    checkValue: '验证码',
+    name: '用户名',
+    password: '密码',
+    register: '注册',
+    resetPassword: '重置密码'
+};
 export const statusCode = {
     '0000': '请求成功',
     '1103': '用户已经存在',
