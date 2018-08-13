@@ -7,7 +7,7 @@ import * as React from 'react';
 import { Request } from '../../cose/Request';
 import URL from '../../constants/URL';
 import alert from '../Alert';
-import { pattern } from '../../utils/Pattern';
+import { lang } from '../../constants/zh-cn';
 
 export interface Form {
     /**
@@ -19,9 +19,9 @@ export interface Form {
      */
     fields: Array<FormItem>;
     /**
-     * logo标题
+     * 表单类型
      */
-    title?: string;
+    type?: 'register' | 'resetPassword';
     /**
      * 提交事件
      * @param values
@@ -106,15 +106,15 @@ export default class Index extends React.Component<Form, State> {
      */
     handleSand(e) {
         e.preventDefault();
+        const {type} = this.props;
         const value: any = this.state.values;
-        // 验证手机号 邮箱的正则
-        let Reg = !(pattern.email.test(value.identity) || (pattern.phone.test(value.identity)));
-        if (!value || !value.identity || Reg) {
+        if (!value || !value.identity) {
             alert('请填写正确的手机号或邮箱');
+            console.log(value);
             return;
         }
         Request({
-            url: `${URL.check}?identity=${value.identity}`
+            url: `${type === 'register' ? URL.register : URL.password}?identity=${value.identity}`
         }).then(res => {
             console.log(res);
             alert(res);
@@ -163,7 +163,9 @@ export default class Index extends React.Component<Form, State> {
     }
 
     render() {
-        const {buttonLabel, fields, title = '', method, action} = this.props;
+        const {buttonLabel, fields, type, method, action} = this.props;
+        // 标题
+        const title = type && `${lang[type]} - ` || '';
         return (
             <aside className="floatBox">
                 <h1 className="logo">{`${title}上福数据`}</h1>
