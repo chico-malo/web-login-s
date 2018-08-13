@@ -7,6 +7,7 @@ import * as React from 'react';
 import { Request } from '../../cose/Request';
 import URL from '../../constants/URL';
 import alert from '../Alert';
+import { pattern } from '../../utils/Pattern';
 
 export interface Form {
     /**
@@ -106,9 +107,10 @@ export default class Index extends React.Component<Form, State> {
     handleSand(e) {
         e.preventDefault();
         const value: any = this.state.values;
-        console.log('发送验证码', value);
-        if (!value || !value.identity) {
-            alert('请填写手机号');
+        // 验证手机号 邮箱的正则
+        let Reg = !(pattern.email.test(value.identity) || (pattern.phone.test(value.identity)));
+        if (!value || !value.identity || Reg) {
+            alert('请填写正确的手机号或邮箱');
             return;
         }
         Request({
