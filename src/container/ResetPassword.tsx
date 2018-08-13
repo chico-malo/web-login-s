@@ -6,7 +6,11 @@
 import * as React from 'react';
 import { routerPath } from '../cose/router.config';
 import Form, { FormItem } from '../components/Form';
-import { fields } from './fields';
+import { checkFields, fields } from './fields';
+import { lang } from '../constants/zh-cn';
+import { Request } from '../cose/Request';
+import alert from '../components/Alert';
+import URL from '../constants/URL';
 
 export class ResetPassword extends React.Component<any> {
     /**
@@ -19,44 +23,36 @@ export class ResetPassword extends React.Component<any> {
 
     /**
      * 提交
+     * @param e
      * @param values
      */
-    handleSubmit(values) {
-        console.log(values);
-        fetch('/api/agencies', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(r => {
-            console.log(r);
-        })
-    }
-
-    handleSand(e) {
+    handleSubmit(e, values) {
         e.preventDefault();
-        console.log('发送验证码');
+        Request({
+            url: `${URL.user}/password`,
+            method: 'PUT',
+            body: JSON.stringify(values)
+        }).then(res => {
+            console.log(res);
+            const {history} = this.props;
+            // 后台信息弹框
+            alert(res);
+            // 成功回调
+            if (res.success) {
+                setTimeout(() => {
+                    history.push(routerPath.login);
+                }, 1000);
+            }
+        });
     }
 
     render() {
         // 重置密码config
-        const registerConfig: Array<FormItem> = fields.concat({
-            label: '验证码',
-            type: 'verification',
-            name: 'verification',
-            after: (
-                <button className="verificationButton"
-                        onClick={this.handleSand}
-                        style={{
-                            pointerEvents: 'none'
-                        }}
-                >发送验证码</button>
-            )
-        });
+        const registerConfig: Array<FormItem> = fields.concat(checkFields);
         return (
             <Form fields={registerConfig}
-                  buttonLabel="注册"
-                  title="重置密码-"
+                  buttonLabel={lang.resetPassword}
+                  type="resetPassword"
                   onSubmit={this.handleSubmit.bind(this)}
             >
                 <a href="javascript:void(0);"
