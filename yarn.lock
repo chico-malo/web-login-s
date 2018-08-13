@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@babel/runtime@^7.0.0-beta.56":
+"@babel/runtime@^7.0.0-rc.1":
   version "7.0.0-rc.1"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-rc.1.tgz#42f36fc5817911c89ea75da2b874054922967616"
   dependencies:
@@ -2181,11 +2181,11 @@ react-router@^4.3.1:
     prop-types "^15.6.1"
     warning "^4.0.1"
 
-react-svg@^5.0.14:
-  version "5.0.14"
-  resolved "https://registry.yarnpkg.com/react-svg/-/react-svg-5.0.14.tgz#4418211e850a672512da4523a87d09fb3a6428f8"
+react-svg@^5.0.16:
+  version "5.0.16"
+  resolved "https://registry.yarnpkg.com/react-svg/-/react-svg-5.0.16.tgz#169906aebacf0c668bccfc3fa25c516d33a58f9a"
   dependencies:
-    "@babel/runtime" "^7.0.0-beta.56"
+    "@babel/runtime" "^7.0.0-rc.1"
     "@tanem/svg-injector" "^1.2.1"
     prop-types "^15.6.2"
 
