@@ -6,7 +6,7 @@
 import * as React from 'react';
 import { routerPath } from '../cose/router.config';
 import Form, { FormItem } from '../components/Form';
-import { fields } from './fields';
+import { checkFields, fields } from './fields';
 import URL from '../constants/URL';
 import { Request } from '../cose/Request';
 import alert from '../components/Alert';
@@ -27,7 +27,6 @@ export class Register extends React.Component<any> {
      */
     handleSubmit(e, values) {
         e.preventDefault();
-        console.log(values);
         Request({
             url: URL.user,
             method: 'POST',
@@ -48,17 +47,11 @@ export class Register extends React.Component<any> {
 
     render() {
         // 注册config
-        const registerConfig: Array<FormItem> = fields.concat({
-            label: '验证码',
-            type: 'text',
-            name: 'checkValue',
-            placeholder: '4位验证码',
-            maxLength: 4
-        });
+        const registerConfig: Array<FormItem> = fields.concat(checkFields);
         return (
             <Form fields={registerConfig}
                   buttonLabel="立即注册"
-                  title="注册-"
+                  type='register'
                   onSubmit={this.handleSubmit.bind(this)}
             >
                 <a href="javascript:void(0);"
