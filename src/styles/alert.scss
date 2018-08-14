@@ -19,12 +19,10 @@
   font-size: 14px;
   color: $font-color-1;
   /*svg 包裹盒子*/
-  .svg-wrapper {
+  .svg {
     margin-right: 10px;
-    /*svg外层盒子*/
-    div {
-      display: flex;
-    }
+    width: 20px;
+    height: 20px;
   }
 }
 
