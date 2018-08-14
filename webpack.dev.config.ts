@@ -3,25 +3,28 @@
  * author: yangyao(873241789@qq.com)
  * date: 2018/8/7
  */
-const path = require('path');
-const webpack = require('webpack');
-const config = require('./webpack.common.config.ts');
+const devPath = require('path');
+const devWebpack = require('webpack');
 
 const api = 'http://192.168.88.15:9000';
 
-config.devServer = {
-    hot: true,
-    publicPath: '/dist/',
-    contentBase: path.join(__dirname, 'src'),
-    compress: true,
-    port: 9000,
-    proxy: {
-        '/api/*': {
-            target: api,
-            changeOrigin: true,
-            pathRewrite: {'^/api': ''}
+module.exports = {
+    devServer: {
+        hot: true,
+        contentBase: devPath.join(__dirname, 'dist'),
+        compress: true,
+        open: true,
+        port: 9000,
+        proxy: {
+            '/api/*': {
+                target: api,
+                changeOrigin: true,
+                pathRewrite: {'^/api': ''}
+            }
         }
-    }
+    },
+    plugins: [
+        new devWebpack.NamedModulesPlugin(),
+        new devWebpack.HotModuleReplacementPlugin()
+    ]
 };
-config.plugins.push(new webpack.HotModuleReplacementPlugin());
-module.exports = config;
