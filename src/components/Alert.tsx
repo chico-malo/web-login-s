@@ -31,7 +31,7 @@ export default function alert(message: string | object) {
     showDom.style.right = '0px';
     showDom.style.bottom = '0px';
     showDom.style.margin = 'auto';
-    showDom.style.width = '18%';
+    showDom.style.maxWidth = '288px';
     showDom.style.height = '100px';
     showDom.style.zIndex = 1;
     body.appendChild(showDom);
