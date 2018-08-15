@@ -62,7 +62,7 @@ module.exports = {
             {
                 test: /\.(tsx|ts)$/,
                 // use: 'babel-loader?cacheDirectory'
-                use: 'ts-loader',
+                use: 'awesome-typescript-loader',
                 exclude: /node_modules/, // 排除不要加载的文件夹
                 include: path.resolve(__dirname, 'src') // 指定需要加载的文件夹
             },
@@ -109,7 +109,7 @@ module.exports = {
             url: serverURL[PROFILE],
             debug: DEBUG,
         }),
-        new CleanWebpackPlugin([resolve('build')]),
+        new CleanWebpackPlugin([resolve('build'), resolve('dll')]),
         new webpack.optimize.ModuleConcatenationPlugin()
     ]
 };
