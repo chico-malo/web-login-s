@@ -53,7 +53,7 @@ npm install  或者 yarn install
 npm start  或者 yarn start
 
 打包：
-// build文件夹下就是打包后的文件
+// build文件夹下就是打包后的文件，记得手动move dll文件到项目文件夹中，已经复制在build文件夹下。
 npm run dll    或者  yarn run dll
 npm run build  或者  yarn run build
 ```
