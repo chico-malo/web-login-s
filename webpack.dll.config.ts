@@ -8,11 +8,11 @@ const dllWebpack = require('webpack');
 
 module.exports = {
     entry: {
-        react: ['react', 'react-dom'] // 将react react-dom 打包到动态链接库
+        polyfill: ['babel-polyfill', 'whatwg-fetch', 'es6-promise']
     },
     output: {
         filename: '[name].dll.js',
-        path: dllPath.join(__dirname, 'build/dll'),
+        path: dllPath.join(__dirname, 'dll'),
         // libraryTarget: 'commonjs',
         library: '_dll_[name]_[hash]' // 全局变量名
     },
