@@ -7,6 +7,7 @@ import * as React from 'react';
 import { routerPath } from '../cose/router.config';
 import Form from '../components/Form';
 import { fields } from './fields';
+import { deepClone } from '../utils/ObjectUtils';
 
 export class Login extends React.Component<any> {
     /**
@@ -37,7 +38,8 @@ export class Login extends React.Component<any> {
 
     render() {
         // 拦截，修改name
-        fields.forEach(values => {
+        let newFields = deepClone(fields);
+        newFields.forEach(values => {
             if (values.name === 'identity') {
                 values.name = 'username';
             }
@@ -47,7 +49,7 @@ export class Login extends React.Component<any> {
             <Form fields={fields}
                   buttonLabel="登录"
                   onSubmit={this.handleSubmit.bind(this)}
-                  action="/api/login"
+                  action="/login"
                   method="POST"
             >
                 <a href="javascript:void(0);"
