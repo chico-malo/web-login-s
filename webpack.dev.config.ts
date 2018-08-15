@@ -6,21 +6,27 @@
 const devPath = require('path');
 const devWebpack = require('webpack');
 
-const api = 'http://192.168.88.15:9000';
+const api = 'http://192.168.88.236:7000';
 
 module.exports = {
     devServer: {
         hot: true,
         contentBase: devPath.join(__dirname, 'dist'),
         compress: true,
+        disableHostCheck: true,
+        historyApiFallback: true,
         open: true,
+        host: "0.0.0.0",
         port: 9000,
         proxy: {
-            '/api/*': {
+            '*': {
                 target: api,
-                changeOrigin: true,
-                pathRewrite: {'^/api': ''}
+                changeOrigin: true
             }
+        },
+        quiet: false,
+        watchOptions: {
+            poll: 1000
         }
     },
     plugins: [
