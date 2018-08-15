@@ -36,9 +36,9 @@ export default function alert(message: string | object) {
     showDom.style.zIndex = 1;
     body.appendChild(showDom);
     // 默认两秒之后关闭弹框
-    // timer = setTimeout(() => {
-    //     removeMessage()
-    // }, 2000);
+    timer = setTimeout(() => {
+        removeMessage()
+    }, 2000);
     ReactDOM.render(
         renderMessage(removeMessage, message),
         showDom
