@@ -4,32 +4,32 @@
     <meta charset="UTF-8"/>
     <title><%= htmlWebpackPlugin.options.title %></title>
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <meta id="eqMobileViewport" name="viewport" content="width=320, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta id="eqMobileViewport" name="viewport" content="width=320, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <script type="text/javascript">
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                // orientationchange 事件是在用户水平或者垂直翻转设备（即方向发生变化）时触发的事件。
+                // onresize 事件会在窗口或框架被调整大小时发生。
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    window.clientWidth = docEl.clientWidth;
+                    if (!window.clientWidth) return;
+                    docEl.style.fontSize = 40 * (window.clientWidth / 640) + 'px';
+                    window.base = 40 * (window.clientWidth / 640);
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <script>
+        if (${htmlWebpackPlugin.options.debug}) {
+            window.serverUrl = 'http://' + location.hostname + ':' + location.port;
+        } else {
+            window.serverUrl = '${htmlWebpackPlugin.options.url}';
+        }
+    </script>
 </head>
-<script type="text/javascript">
-    (function (doc, win) {
-        var docEl = doc.documentElement,
-            // orientationchange 事件是在用户水平或者垂直翻转设备（即方向发生变化）时触发的事件。
-            // onresize 事件会在窗口或框架被调整大小时发生。
-            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-            recalc = function () {
-                window.clientWidth = docEl.clientWidth;
-                if (!window.clientWidth) return;
-                docEl.style.fontSize = 40 * (window.clientWidth / 640) + 'px';
-                window.base = 40 * (window.clientWidth / 640);
-            };
-        if (!doc.addEventListener) return;
-        win.addEventListener(resizeEvt, recalc, false);
-        doc.addEventListener('DOMContentLoaded', recalc, false);
-    })(document, window);
-</script>
-<script>
-    if (${htmlWebpackPlugin.options.debug}) {
-        window.serverUrl = 'http://' + location.hostname + ':' + location.port;
-    } else {
-        window.serverUrl = '${htmlWebpackPlugin.options.url}';
-    }
-</script>
 <body>
 <div id="application"></div>
 <script src="./main.js"></script>
