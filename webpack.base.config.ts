@@ -11,6 +11,8 @@ const pkg = require('./package.json');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // 清除打包目录
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+// 拷贝dll文件
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // 打包服务器请求地址
 const serverURL = {
@@ -46,13 +48,6 @@ module.exports = {
                     minChunks: 2,
                     maxInitialRequests: 5,
                     minSize: 0
-                },
-                vendor: {
-                    test: /node_modules/,
-                    chunks: 'initial',
-                    name: 'vendor',
-                    priority: 10,
-                    enforce: true
                 }
             }
         }
@@ -109,7 +104,11 @@ module.exports = {
             url: serverURL[PROFILE],
             debug: DEBUG,
         }),
-        new CleanWebpackPlugin([resolve('build'), resolve('dll')]),
+        new CopyWebpackPlugin([{
+            from: './dll/vendor.dll.js',
+            to: resolve('build')
+        }]),
+        new CleanWebpackPlugin([resolve('build')]),
         new webpack.optimize.ModuleConcatenationPlugin()
     ]
 };
