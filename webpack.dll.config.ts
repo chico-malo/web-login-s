@@ -8,7 +8,7 @@ const dllWebpack = require('webpack');
 
 module.exports = {
     entry: {
-        polyfill: ['babel-polyfill', 'whatwg-fetch', 'es6-promise']
+        vendor: ['babel-polyfill', 'whatwg-fetch', 'es6-promise']
     },
     output: {
         filename: '[name].dll.js',
