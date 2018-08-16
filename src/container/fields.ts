@@ -14,7 +14,7 @@ export const fields: Array<FormItem> = [{
     placeholder: '邮箱/手机号'
 }, {
     label: lang.password,
-    type: 'password',
+    type: 'text',
     name: 'password',
     placeholder: '密码'
 }];
