@@ -49,6 +49,7 @@ export interface FormItem {
 type State = {
     values: object;
     countDown: number;
+    passwordType: string;
 };
 
 export default class Index extends React.Component<Form, State> {
@@ -56,9 +57,20 @@ export default class Index extends React.Component<Form, State> {
         super(props, content);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSand = this.handleSand.bind(this);
+        this.handleFocus = this.handleFocus.bind(this);
         this.state = {
+            /**
+             * 存放input所有的值
+             */
             values: {},
-            countDown: 0
+            /**
+             * 验证码倒计时
+             */
+            countDown: 0,
+            /**
+             * 存放input Name props(默认为text，当input聚集时改为password)
+             */
+            passwordType: 'text'
         };
     }
 
@@ -84,20 +96,35 @@ export default class Index extends React.Component<Form, State> {
                     >{countDown === 0 ? '发送验证码' : countDown}</button>
                 );
             }
+            // autoComplete阻止填充只有type为text时生效，password input默认为text 聚焦时再改回来
             return (
                 <section key={index}>
                     <label>{`${label}:`}</label>
-                    <input type={type}
+                    <input type={name === 'password' ? this.state.passwordType : type}
                            name={name}
+                           autoComplete="off"
                            placeholder={placeholder}
                            required
                            onChange={value => this.handleSave(value, name)}
+                           onFocus={() => this.handleFocus(name)}
                            {...other}
                     />
                     {after}
                 </section>
             )
         });
+    }
+
+    /**
+     * input聚焦时，判断name更改input type
+     * @param name
+     */
+    handleFocus(name) {
+        if (name === 'password') {
+            this.setState({
+                passwordType: 'password'
+            });
+        }
     }
 
     /**
@@ -110,7 +137,7 @@ export default class Index extends React.Component<Form, State> {
         const value: any = this.state.values;
         if (!value || !value.identity) {
             alert('请填写正确的手机号或邮箱');
-            console.log(value);
+            console.log('empty value=>', value);
             return;
         }
         Request({
