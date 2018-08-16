@@ -16,8 +16,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // 打包服务器请求地址
 const serverURL = {
-    development: 'http://192.168.88.15:9000',
-    production: ''
+    development: 'http://192.168.88.236:7000',
+    production: 'http://192.168.88.236:7000'
 };
 // 获取启动时 的全局参数
 const {PROFILE = 'development', NODE_ENV = 'development'} = process.env;
