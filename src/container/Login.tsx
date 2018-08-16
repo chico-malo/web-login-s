@@ -46,7 +46,7 @@ export class Login extends React.Component<any> {
         });
 
         return (
-            <Form fields={fields}
+            <Form fields={newFields}
                   buttonLabel="登录"
                   onSubmit={this.handleSubmit.bind(this)}
                   action="/login"
