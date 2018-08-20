@@ -6,10 +6,21 @@
 import * as React from 'react';
 import { routerPath } from '../cose/router.config';
 import Form from '../components/Form';
-import { fields } from './fields';
 import { deepClone } from '../utils/ObjectUtils';
 
+import { fields } from './fields';
+import URL from '../constants/URL';
+import alert from '../components/Alert';
+
 export class Login extends React.Component<any> {
+    componentWillMount() {
+        // 获取url中的错误代码
+        let url = location.href;
+        if (url.indexOf("?error") > -1) {
+            alert('用户名或者密码不准确!');
+        }
+    }
+
     /**
      * 跳转注册
      */
@@ -49,7 +60,7 @@ export class Login extends React.Component<any> {
             <Form fields={newFields}
                   buttonLabel="登录"
                   onSubmit={this.handleSubmit.bind(this)}
-                  action="/login"
+                  action={URL.login}
                   method="POST"
             >
                 <a href="javascript:void(0);"
