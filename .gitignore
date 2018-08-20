@@ -29,13 +29,9 @@ local.properties
 
 overridedb.*
 
-/code
-log
-logs
-lib/
-target
-_site/
-activemq-data
+dll
+buld
+node_modules
 
 *.iml
 *.ipr
