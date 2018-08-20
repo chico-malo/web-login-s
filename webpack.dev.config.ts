@@ -11,12 +11,13 @@ const api = 'http://192.168.88.7:7000';
 module.exports = {
     devServer: {
         hot: true,
+        inline: true,
         contentBase: devPath.join(__dirname, 'dist'),
         compress: true,
         disableHostCheck: true,
         historyApiFallback: true,
         open: true,
-        host: "0.0.0.0",
+        host: '0.0.0.0',
         port: 9000,
         proxy: {
             '/api/*': {
