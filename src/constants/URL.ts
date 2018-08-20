@@ -7,6 +7,7 @@
 export const base = (global as any).serverUrl;
 
 export default {
+    login: `${base}/system/session`,
     user: `${base}/users`,
     register: `${base}/register-check-value`,
     password: `${base}/password-check-value`
