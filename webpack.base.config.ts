@@ -105,10 +105,10 @@ module.exports = {
             debug: DEBUG,
         }),
         new CopyWebpackPlugin([{
-            from: './dll/vendor.dll.js',
+            from: 'build/dll/vendor.dll.js',
             to: resolve('build')
         }]),
-        new CleanWebpackPlugin([resolve('build')]),
+        new CleanWebpackPlugin([resolve(`${pkg.name}-${pkg.version}`)]),
         new webpack.optimize.ModuleConcatenationPlugin()
     ]
 };
