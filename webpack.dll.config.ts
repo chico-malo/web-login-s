@@ -8,18 +8,18 @@ const dllWebpack = require('webpack');
 
 module.exports = {
     entry: {
-        vendor: ['babel-polyfill', 'whatwg-fetch', 'es6-promise']
+        vendor: ['babel-polyfill', 'whatwg-fetch', 'es6-promise', 'react', 'react-dom']
     },
     output: {
         filename: '[name].dll.js',
-        path: dllPath.join(__dirname, 'dll'),
+        path: dllPath.join(__dirname, 'build/dll'),
         // libraryTarget: 'commonjs',
         library: '_dll_[name]_[hash]' // 全局变量名
     },
     plugins: [
         new dllWebpack.DllPlugin({
             name: '_dll_[name]_[hash]',
-            path: dllPath.join(__dirname, 'dll', '[name].manifest.json') // manifest文件的输出路径
+            path: dllPath.join(__dirname, 'build/dll', '[name].manifest.json') // manifest文件的输出路径
         })
     ]
 };
