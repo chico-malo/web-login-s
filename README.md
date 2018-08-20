@@ -1,4 +1,4 @@
-# bless-register-login
+# yoyo-single-register-login
 web版笨拙的动画加不流畅的体验流程，从而诞生了单点登录 webpack版本。
 
 
