@@ -29,8 +29,7 @@ local.properties
 
 overridedb.*
 
-dll
-buld
+build
 node_modules
 
 *.iml
