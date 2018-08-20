@@ -67,7 +67,7 @@ function removeMessage() {
  */
 function renderMessage(close, message) {
     // 默认错误
-    let svgPath = require('../assets/svg/wran.svg');
+    let svgPath = require('../assets/svg/warn.svg');
     let messageString = message;
     let borderColor = 'rgba(255,229,143,1)';
     let backColor = 'rgba(255,251,230,1)';
