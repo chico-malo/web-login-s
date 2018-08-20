@@ -24,7 +24,7 @@
     </script>
     <script>
         if (${htmlWebpackPlugin.options.debug}) {
-            window.serverUrl = 'http://' + location.hostname + ':' + location.port;
+            window.serverUrl = 'http://' + location.hostname + ':' + location.port + '/api';
         } else {
             window.serverUrl = '${htmlWebpackPlugin.options.url}';
         }
