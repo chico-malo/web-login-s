@@ -3,7 +3,7 @@
  * author: yangyao(873241789@qq.com)
  * date: 2018/8/7
  */
-import 'whatwg-fetch'
+import 'whatwg-fetch';
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Promise } from 'es6-promise';
