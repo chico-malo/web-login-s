@@ -1,4 +1,4 @@
-# yoyo-single-register-login
+# web-login-s
 web版笨拙的动画加不流畅的体验流程，从而诞生了单点登录 webpack版本。
 
 
@@ -9,6 +9,7 @@ web版笨拙的动画加不流畅的体验流程，从而诞生了单点登录 w
 - babel-polyfill 兼容浏览器不支持的原生方法。
 - es6-promise 解决node异步请求的弊端。(有序的异步请求)
 - 更小、更轻的配置，常用loader、最基础的webpack插件。
+- 使用自己开发的脚手架工具创建
 
 
 
@@ -43,7 +44,7 @@ web版笨拙的动画加不流畅的体验流程，从而诞生了单点登录 w
 
 ```
 克隆项目文件:
-git clone https://github.com/happysuns/bless-register-login.git
+git clone https://github.com/chico-malo/web-login-s.git
 
 进入目录安装依赖:
 npm install  或者 yarn install
