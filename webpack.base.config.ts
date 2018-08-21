@@ -19,10 +19,14 @@ const serverURL = {
     development: 'http://192.168.88.236:7000',
     production: 'http://192.168.88.236:7000'
 };
+
 // 获取启动时 的全局参数
 const {PROFILE = 'development', NODE_ENV = 'development'} = process.env;
 
 const DEBUG = NODE_ENV !== 'production';
+
+// htmlTitle
+const htmlTitle = 'Welcome to yoyo!';
 
 /**
  * 封装模块绝对路径
@@ -100,7 +104,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: resolve('./src/index.html'),
             filename: 'index.html',
-            title: '注册-上福数据',
+            title: htmlTitle,
             url: serverURL[PROFILE],
             debug: DEBUG,
         }),
