@@ -26,7 +26,7 @@ const {PROFILE = 'development', NODE_ENV = 'development'} = process.env;
 const DEBUG = NODE_ENV !== 'production';
 
 // htmlTitle
-const htmlTitle = 'Welcome to yoyo!';
+const htmlTitle = '上福数据-登录';
 
 /**
  * 封装模块绝对路径
